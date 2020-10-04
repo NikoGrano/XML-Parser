@@ -4,11 +4,10 @@
 #include <string>
 #include <cstdint>
 
-namespace BWPack
-{
-	static const int BW_MATRIX_NROWS = 4;
-	static const int BW_MATRIX_NCOLS = 3;
-	static const int BW_MATRIX_SIZE = BW_MATRIX_NROWS * BW_MATRIX_NCOLS;
+namespace Serializer {
+	static const int MATRIX_NROWS = 4;
+	static const int MATRIX_NCOLS = 3;
+	static const int MATRIX_SIZE = MATRIX_NROWS * MATRIX_NCOLS;
 
     rawDataBlock PackBuffer(const std::string& strVal);
 	struct rawDataBlock {
