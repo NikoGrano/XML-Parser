@@ -4,15 +4,16 @@
 #include <cstdint>
 
 namespace Engine {
+	static const uint32_t PACKED_SECTION_MAGIC = 0x62a14e45;
     enum PackedDataType {
-		BW_Section  = 0x0,
-		BW_String   = 0x1,
-		BW_Int      = 0x2,
-		BW_Float    = 0x3,
-		BW_Bool     = 0x4,
-		BW_Blob     = 0x5,
-		BW_Enc_blob = 0x6,
-		BW_Reserved = 0x7
+		TYPE_Section  = 0x0,
+		TYPE_String   = 0x1,
+		TYPE_Int      = 0x2,
+		TYPE_Float    = 0x3,
+		TYPE_Bool     = 0x4,
+		TYPE_Blob     = 0x5,
+		TYPE_Enc_blob = 0x6,
+		TYPE_Reserved = 0x7
 	};
 
 #pragma pack(push, 1)
@@ -28,6 +29,7 @@ namespace Engine {
 		    PackedDataType typeId() const { 
                 return static_cast<PackedDataType>(rawData >> 28); 
             };
+			
 		    uint32_t offset() const { 
                 return rawData & 0x0FFFFFFF; 
             };
