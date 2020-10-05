@@ -19,13 +19,13 @@ namespace Processor {
 		std::vector<std::string> mStrings;
 		boost::property_tree::ptree mTree;
 
-		typedef std::vector<Processor::dataBlock> dataArray;
+		typedef std::vector<Serializer::dataBlock> dataArray;
 
 		void collectStrings();
 		uint16_t resolveString(const std::string& str) const;
 		void treeWalker(const boost::property_tree::ptree& node);
 
-		Engine::DataDescriptor BuildDescriptor(Processor::rawDataBlock block, uint32_t prevOffset) const;
+		Engine::DataDescriptor BuildDescriptor(Serializer::rawDataBlock block, uint32_t prevOffset) const;
 		Processor::rawDataBlock serializeNode(const boost::property_tree::ptree& nodeVal, bool simple) const;
 		std::string serializeSection(const boost::property_tree::ptree& section) const;
 	};

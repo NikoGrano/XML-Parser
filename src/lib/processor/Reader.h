@@ -20,5 +20,5 @@ namespace Processor {
             void ReadStringTable();
             boost::property_tree::ptree ReadSection();
             void readData(Engine::DataDescriptor descr, boost::property_tree::ptree& currentNode, uint32_t previous);
-    }
+    };
 }

@@ -22,7 +22,7 @@ namespace Base64 {
 	std::string Decode(std::string src) {
 		while ((src.length()) % 4 != 0) {
 			src.push_back(0);
-		}y
+		}
 
 		return std::string(binary_t(src.begin()), binary_t(src.end()));
 	}
