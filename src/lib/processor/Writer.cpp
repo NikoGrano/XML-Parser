@@ -130,6 +130,22 @@ namespace Processor {
 		mFile.close();
 	}
 
+	void XmlWriter::toStdout() {
+		collectStrings();
+
+		std::stringstream outbuf;
+		Stream::IO::StreamBufWriter outstream(outbuf.rdbuf());
+		outstream.put(Engine::PACKED_SECTION_MAGIC);
+		outstream.put<uint8_t>(0);
+		for (auto it = mStrings.begin(); it!= mStrings.end(); ++it)
+			outstream.putString(*it);
+		outstream.put<uint8_t>(0);
+
+		outstream.putString(serializeSection(mTree), false);
+
+		std::cout << outbuf.rdbuf();
+	}
+
 	std::string XmlWriter::serializeSection(const ptree& node) const {
 		std::stringstream _ret;
 		Stream::IO::StreamBufWriter ret(_ret.rdbuf());

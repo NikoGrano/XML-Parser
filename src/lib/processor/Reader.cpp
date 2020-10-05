@@ -35,6 +35,22 @@ namespace Processor {
 		boost::property_tree::write_xml(destname, mTree, std::locale(), settings);
 	}
 
+	void XmlReader::toStdout() {
+		#if BOOST_VERSION >= 105600
+			static auto settings = boost::property_tree::xml_writer_make_settings<ptree::key_type>('\t', 1);
+		#else
+			static auto settings = boost::property_tree::xml_writer_make_settings('\t', 1);
+		#endif
+
+		std::string tmp = std::tmpnam(nullptr);
+		boost::property_tree::write_xml(tmp, mTree, std::locale(), settings);
+		std::ifstream f(tmp);
+		if (f.is_open()) {
+			std::cout << f.rdbuf();
+		}
+		unlink(tmp.c_str());
+	}
+
 	void XmlReader::ReadStringTable() {
 		for (std::string tmp = mStream.getNullTerminatedString(); 
 			!tmp.empty(); 

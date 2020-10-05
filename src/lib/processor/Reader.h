@@ -11,6 +11,7 @@ namespace Processor {
         public:
             XmlReader(const std::string& fname);
             void saveTo(const std::string& destName) const;
+            void toStdout();
 
         protected:
             Stream::IO::StreamReader mStream;

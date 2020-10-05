@@ -9,11 +9,11 @@
 #include "../common/Stream.h"
 
 namespace Processor {
-	class XmlWriter
-	{
+	class XmlWriter {
 	public:
 		XmlWriter(const std::string& fname);
 		void saveTo(const std::string& destname);
+		void toStdout();
 
 	protected:
 		std::vector<std::string> mStrings;
@@ -26,7 +26,7 @@ namespace Processor {
 		void treeWalker(const boost::property_tree::ptree& node);
 
 		Engine::DataDescriptor BuildDescriptor(Serializer::rawDataBlock block, uint32_t prevOffset) const;
-		Processor::rawDataBlock serializeNode(const boost::property_tree::ptree& nodeVal, bool simple) const;
+		Serializer::rawDataBlock serializeNode(const boost::property_tree::ptree& nodeVal, bool simple) const;
 		std::string serializeSection(const boost::property_tree::ptree& section) const;
 	};
 }
