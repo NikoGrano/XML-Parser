@@ -34,3 +34,13 @@
 *.exe
 *.out
 *.app
+
+# CMake
+Makefile
+*.cmake
+CMakeFiles/
+CMakeCache.txt
+
+# Misc
+xmlparser
+install_manifest.txt
